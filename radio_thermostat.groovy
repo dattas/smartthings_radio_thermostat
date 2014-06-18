@@ -135,15 +135,8 @@ def parse(String description) {
         }
         
     }
-	// TODO: handle 'temperature' attribute
-	// TODO: handle 'heatingSetpoint' attribute
-	// TODO: handle 'coolingSetpoint' attribute
-	// TODO: handle 'thermostatSetpoint' attribute
-	// TODO: handle 'thermostatMode' attribute
-	// TODO: handle 'thermostatFanMode' attribute
-	// TODO: handle 'thermostatOperatingState' attribute
-    
-	log.debug "Parse returned $retResult"
+
+    log.debug "Parse returned $retResult"
     if (retResult.size > 0){
 		return retResult
     } else {

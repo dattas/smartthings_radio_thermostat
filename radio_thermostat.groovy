@@ -276,17 +276,20 @@ private postapi(command) {
 
   def uri = "/tstat"
 
-  def hubAction = new physicalgraph.device.HubAction(
+  def hubAction = [new physicalgraph.device.HubAction(
     method: "POST",
     path: uri,
     body: command,
     headers: [Host:getHostAddress(), "Content-Type":"application/x-www-form-urlencoded" ]
-  )
+  ), delayAction(1000), refresh()]
 
   hubAction
 }
 
 //helper methods
+private delayAction(long time) {
+	new physicalgraph.device.HubAction("delay $time")
+}
 private Integer convertHexToInt(hex) {
   Integer.parseInt(hex,16)
 }

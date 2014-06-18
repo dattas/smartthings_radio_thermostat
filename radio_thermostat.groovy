@@ -99,51 +99,33 @@ def parse(String description) {
     }
     if (result.containsKey("tmode")){
     	def tmode = getModeMap()[result.tmode]
-        log.debug tmode
-        log.debug device.currentState("thermostatMode")?.value
         if(device.currentState("thermostatMode")?.value != tmode){
-        	map = [:]
-        	map.name = "thermostatMode"
-        	map.value = tmode
-        	retResult << createEvent(map)
+            retResult << createEvent(name: "thermostatMode", value: tmode)
         }
     }
     if (result.containsKey("fmode")){
     	def fmode = getFanModeMap()[result.fmode]
         if (device.currentState("thermostatFanMode")?.value != fmode){
-            map = [:]
-            map.name = "thermostatFanMode"
-            map.value = fmode
-            retResult << createEvent(map)
+            retResult << createEvent(name: "thermostatFanMode", value: fmode)
         }
     }
     if (result.containsKey("t_cool")){
     	def t_cool = getTemperature(result.t_cool)
-    	if (device.currentState("coolingSetpoint")?.value != t_cool){
-            map = [:]
-            map.name = "coolingSetpoint"
-            map.value = t_cool
-            retResult << createEvent(map)
+    	if (device.currentState("coolingSetpoint")?.value != t_cool.toString()){
+            retResult << createEvent(name: "coolingSetpoint", value: t_cool)
         }
     }
     if (result.containsKey("t_heat")){
     	def t_heat = getTemperature(result.t_heat)
-    	if (device.currentState("heatingSetpoint")?.value != t_heat){
-            map = [:]
-            map.name = "heatingSetpoint"
-            map.value = t_heat
-            retResult << createEvent(map)
+    	if (device.currentState("heatingSetpoint")?.value != t_heat.toString()){
+            retResult << createEvent(name: "heatingSetpoint", value: t_heat)
         }
     }
     if (result.containsKey("temp")){
     	def temp = getTemperature(result.temp)
-    	if (device.currentState("temperature")?.value != temp){
-            map = [:]
-            map.name = "temperature"
-            map.value = temp
-            retResult << createEvent(map)
-        }
-        
+    	if (device.currentState("temperature")?.value != temp.toString()){
+            retResult << createEvent(name: "temperature", value: temp)
+        }        
     }
 
     log.debug "Parse returned $retResult"

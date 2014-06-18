@@ -17,7 +17,7 @@ import groovy.json.JsonSlurper
 metadata {
 	definition (name: "Honeywell local API", namespace: "Thermostat", author: "Dattas Moonchaser") {
     	capability "Temperature Measurement"
-		capability "Thermostat"
+	capability "Thermostat"
         capability "Refresh"
         capability "Sensor"
         capability "Polling"

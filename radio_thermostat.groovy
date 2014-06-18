@@ -20,6 +20,7 @@ metadata {
 		capability "Thermostat"
         capability "Refresh"
         capability "Sensor"
+        capability "Polling"
 	}
 
 	simulator {
@@ -146,6 +147,7 @@ def parse(String description) {
 }
 def poll() {
 	log.debug "Executing 'poll'"
+	sendEvent(descriptionText: "poll keep alive", isStateChange: false)  // workaround to keep polling from being shut off
 	refresh()
 }
 def modes() {
@@ -308,4 +310,3 @@ private getHostAddress() {
   def port = convertHexToInt(parts[1])
   return ip + ":" + port
 }
-

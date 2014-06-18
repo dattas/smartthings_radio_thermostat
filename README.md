@@ -1,7 +1,7 @@
 smartthings_radio_thermostat
 ============================
 
-Allow smartthings to talk to a radio thermostat device.
+Allow smartthings to talk to a radio thermostat device over your local wifi. This does not talk to the Radio Thermostat cloud!
 You must set the following types for your device:
 
 - Refresh 

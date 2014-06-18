@@ -8,6 +8,7 @@ You must set the following types for your device:
 - Temperature Measurement 
 - Sensor 
 - Thermostat
+- Polling
 
 Set the device network id to the IP address in hex (no spaces,dots,etc) with :0050 after.
 
